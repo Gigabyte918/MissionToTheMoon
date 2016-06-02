@@ -1,11 +1,12 @@
 function() { //leave the extra parameters empty
   //Draw The Image
-  fill(148, 98, 48);
-  stroke(148, 98, 48);
-  rect(50, 50, 100, 100);
-  fill(125, 83, 40);
-  stroke(125, 83, 40);          
-  rect(60, 60, 80, 80);
+ fill(148, 98, 48);
+ stroke(148, 98, 48);
+ rect( 2, 2, 27, 27);
+ fill(125, 83, 40);
+ stroke(125, 83, 40);          
+ rect(4, 4, 23, 23);
+
   //Make the function display the image
   return get(0, 0, 29, 29); //Returns a 27x27 square (25x25 square with room for a strokeweight of 2)
 }
