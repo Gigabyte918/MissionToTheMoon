@@ -2,8 +2,6 @@
 ## A Browser Game Coded in Processing Javascript with the help of Javascript
 Play Now! - [http://missiontothemoon.ga/](http://missiontothemoon.ga/) - Website By SharkFin
 
-Play Now! - [sharkfinproductions.github.io/MissionToTheMoon/](sharkfinproductions.github.io/MissionToTheMoon/) - Website By SharkFin Productions Team (GitHub)
-
 [![Join the chat at https://gitter.im/SharkFinPro/MissionToTheMoonChat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SharkFinPro/MissionToTheMoonChat/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 -----
