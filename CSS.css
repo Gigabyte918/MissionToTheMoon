@@ -1,0 +1,33 @@
+body{
+  background-color: silver;
+}
+
+#heading{
+  text-align: center;
+  color: black;
+  font-family: Trebuchet MS;
+  font-size: 30px;
+}
+
+#canvas{
+  background-color: black;
+  border: 2px solid white;
+  width: 1100px;
+  height: 700px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#btb{
+  text-align: center;
+  display:  block;
+  color:  black;
+  font-family: Trebuchet MS;
+  font-size: 20px;
+}
+#btb a{
+    color:  inherit;
+}
