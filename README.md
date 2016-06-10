@@ -8,8 +8,6 @@ Play Now! - [http://missiontothemoon.ga/](http://missiontothemoon.ga/) - Website
 
 # 0.1 update:
 
- ○ Basic Platformer Code
-
  ○ Basic Adventure
 
  ○ Blocks: Grass, Dirt, Stone
