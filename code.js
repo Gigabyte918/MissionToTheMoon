@@ -1,3 +1,4 @@
+//PJS
 var sketchProc = function(processingInstance) {
   with(processingInstance) {
     size(1000, 700);
@@ -10,22 +11,21 @@ var sketchProc = function(processingInstance) {
       cols: 200,
     };
     //Player
-    var position = new PVector(world.cols * 25 / 2, 175);
     var s = 12.5;
     /** Images **/
     noiseSeed(1);
     var images = {
       //Grass
-      grass: function() {
+      grass: function() { //leave the extra parameters empty
+        //Draw The Image
         for (var y = 50; y < 55; y++) {
           for (var x = 0; x < 25; x++) {
             var noiseVal;
             var noiseScale = 0.02;
             noiseDetail(8, 0.6);
-            noiseVal = noise((x + 200) * noiseScale, (
-              y + 200) * noiseScale);
-            stroke(noiseVal * 0, noiseVal * 182,
-              noiseVal * 0);
+            noiseVal = noise((x + 200) * noiseScale, (y + 200) *
+              noiseScale);
+            stroke(noiseVal * 0, noiseVal * 182, noiseVal * 0);
             point(x, y);
           }
         }
@@ -34,13 +34,13 @@ var sketchProc = function(processingInstance) {
             var noiseVal;
             var noiseScale = 0.02;
             noiseDetail(8, 0.6);
-            noiseVal = noise((x + 200) * noiseScale, (
-              y + 200) * noiseScale);
-            stroke(noiseVal * 160, noiseVal * 112,
-              noiseVal * 0);
+            noiseVal = noise((x + 200) * noiseScale, (y + 200) *
+              noiseScale);
+            stroke(noiseVal * 160, noiseVal * 112, noiseVal * 0);
             point(x, y);
           }
         }
+        //Make the function display the image
         return get(0, 50, 25, 25);
       },
       //Dirt
@@ -50,10 +50,9 @@ var sketchProc = function(processingInstance) {
             var noiseVal;
             var noiseScale = 0.02;
             noiseDetail(8, 0.6);
-            noiseVal = noise((x + 200) * noiseScale, (
-              y + 200) * noiseScale);
-            stroke(noiseVal * 160, noiseVal * 112,
-              noiseVal * 0);
+            noiseVal = noise((x + 200) * noiseScale, (y + 200) *
+              noiseScale);
+            stroke(noiseVal * 160, noiseVal * 112, noiseVal * 0);
             point(x, y);
           }
         }
@@ -66,10 +65,9 @@ var sketchProc = function(processingInstance) {
             var noiseVal;
             var noiseScale = 0.02;
             noiseDetail(8, 0.6);
-            noiseVal = noise((x + 10) * noiseScale, (
-              y + 100) * noiseScale);
-            stroke(noiseVal * 150, noiseVal * 150,
-              noiseVal * 150);
+            noiseVal = noise((x + 10) * noiseScale, (y + 100) *
+              noiseScale);
+            stroke(noiseVal * 150, noiseVal * 150, noiseVal * 150);
             point(x, y);
           }
         }
@@ -93,8 +91,7 @@ var sketchProc = function(processingInstance) {
       this.display();
     };
     grass.prototype.display = function() {
-      image(images.grass, this.position.x, this.position.y,
-        this.w, this.h);
+      image(images.grass, this.position.x, this.position.y, this.w, this.h);
     };
     //Dirt
     dirt = function(x, y) {
@@ -106,8 +103,7 @@ var sketchProc = function(processingInstance) {
       this.display();
     };
     dirt.prototype.display = function() {
-      image(images.dirt, this.position.x, this.position.y,
-        this.w, this.h);
+      image(images.dirt, this.position.x, this.position.y, this.w, this.h);
     };
     //Stone
     stone = function(x, y) {
@@ -119,8 +115,7 @@ var sketchProc = function(processingInstance) {
       this.display();
     };
     stone.prototype.display = function() {
-      image(images.stone, this.position.x, this.position.y,
-        this.w, this.h);
+      image(images.stone, this.position.x, this.position.y, this.w, this.h);
     };
     //Tile Generation
     var tilegeneration = function(t) {
@@ -133,36 +128,30 @@ var sketchProc = function(processingInstance) {
       switch (this.tt) {
         case 1:
           //Layers
-          var grassLayers = [150, 175, 200];
-          var stoneLayers = [300, 325, 350];
+          var grassLayers = [375, 400, 425];
+          var stoneLayers = [525, 550, 575];
           //Generation stuff
           var GrassPOS = [];
           var StonePOS = [];
           //Generate the grass
           while (GrassPOS.length < world.cols) {
-            GrassPOS.push(grassLayers[floor(random() *
-              grassLayers.length)]);
+            GrassPOS.push(grassLayers[floor(random() * grassLayers.length)]);
           }
           //Generate the stone
           while (StonePOS.length < world.cols) {
-            StonePOS.push(stoneLayers[floor(random() *
-              stoneLayers.length)]);
+            StonePOS.push(stoneLayers[floor(random() * stoneLayers.length)]);
           }
           //Make the bottom of the stone flat
           for (var i = 0; i < world.cols; i += 1) {
             if (StonePOS[i] === stoneLayers[0]) {
-              Stone.push(new stone(i * 25,
-                stoneLayers[1]));
-              Stone.push(new stone(i * 25,
-                stoneLayers[2]));
+              Stone.push(new stone(i * 25, stoneLayers[1]));
+              Stone.push(new stone(i * 25, stoneLayers[2]));
             } else if (StonePOS[i] === stoneLayers[1]) {
-              Stone.push(new stone(i * 25,
-                stoneLayers[2]));
+              Stone.push(new stone(i * 25, stoneLayers[2]));
             }
           }
           for (var w = 0; w < world.cols; w += 1) {
-            for (var h = 375; h < world.rows * 25; h +=
-              25) {
+            for (var h = 600; h < world.rows * 25; h += 25) {
               Stone.push(new stone(w * 25, h));
             }
           }
@@ -177,24 +166,22 @@ var sketchProc = function(processingInstance) {
           }
           //Dirt
           for (var w = 0; w < world.cols; w++) {
-            for (var h = GrassPOS[w] + 25; h < StonePOS[
-                w]; h += 25) {
+            for (var h = GrassPOS[w] + 25; h < StonePOS[w]; h += 25) {
               Dirt.push(new dirt(w * 25, h));
             }
           }
           break;
         case 2:
           for (var w = 0; w < world.cols; w += 1) {
-            Grass.push(new grass(w * 25, 200));
+            Grass.push(new grass(w * 25, 375));
           }
           for (var w = 0; w < world.cols; w += 1) {
-            for (var h = 225; h < 300; h += 25) {
+            for (var h = 400; h < 475; h += 25) {
               Dirt.push(new dirt(w * 25, h));
             }
           }
           for (var w = 0; w < world.cols; w += 1) {
-            for (var h = 300; h < world.rows * 25; h +=
-              25) {
+            for (var h = 475; h < world.rows * 25; h += 25) {
               Stone.push(new stone(w * 25, h));
             }
           }
@@ -205,24 +192,57 @@ var sketchProc = function(processingInstance) {
     var tg = new tilegeneration(gt[floor(random() * gt.length)]);
     tg.run(); /** ONLY CALL THIS LINE OF CODE HERE - NO-WHERE ELSE **/
     var keys = [];
-    //Map Camera
     var keyPressed = function() {
       keys[keyCode] = true;
     };
     var keyReleased = function() {
       keys[keyCode] = false;
     };
+    //
+    var Player = function(x, y) {
+      this.pos = new PVector(x, y);
+      this.w = 25;
+      this.h = 25;
+      this.s = 12.5;
+    };
+    Player.prototype.run = function() {
+      this.draw();
+      this.update();
+    };
+    Player.prototype.draw = function() {
+      noStroke();
+      fill(255);
+      rect(this.pos.x, this.pos.y, this.w, this.h, 5);
+      stroke(0);
+      strokeWeight(5);
+      point(this.pos.x + 7.5, this.pos.y + 10);
+      point(this.pos.x + 17.5, this.pos.y + 10);
+    };
+    Player.prototype.update = function() {
+      if (keys[UP]) {
+        this.pos.y -= this.s;
+      }
+      if (keys[DOWN]) {
+        this.pos.y += this.s;
+      }
+      if (keys[LEFT]) {
+        this.pos.x -= this.s;
+      }
+      if (keys[RIGHT]) {
+        this.pos.x += this.s;
+      }
+    };
+    var player = new Player(world.cols * 25 / 2, 200);
+    //
     var mapCamera = {
-      pos: new PVector(200 - position.x, 200 - position.y),
+      pos: new PVector(200 - player.pos.x, 200 - player.pos.y),
       right: -world.cols * 25,
       bottom: -world.rows * 25,
       run: function() {
-        this.pos.x = constrain(this.pos.x + (width / 2 -
-            position.x - this.pos.x) / 5, this.right,
-          0);
-        this.pos.y = constrain(this.pos.y + (height / 2 -
-            position.y - this.pos.y) / 5, this.bottom,
-          0);
+        this.pos.x = constrain(this.pos.x + (width / 2 - player.pos.x -
+          this.pos.x) / 5, this.right, 0);
+        this.pos.y = constrain(this.pos.y + (height / 2 - player.pos.y -
+          this.pos.y) / 5, this.bottom, 0);
         translate(this.pos.x, this.pos.y);
       }
     };
@@ -246,13 +266,7 @@ var sketchProc = function(processingInstance) {
       for (var each in Stone) {
         Stone[each].run();
       }
-      noStroke();
-      fill(255);
-      rect(position.x, position.y, 25, 25, 5);
-      stroke(0);
-      strokeWeight(5);
-      point(position.x + 7.5, position.y + 10);
-      point(position.x + 17.5, position.y + 10);
+      player.run();
       if (bug) {
         noFill();
         stroke(0);
@@ -260,22 +274,6 @@ var sketchProc = function(processingInstance) {
         rect(0, 0, world.cols * 25, world.rows * 25);
       }
       popMatrix();
-      if (keys[RIGHT]) {
-        position.x += s;
-      }
-      if (keys[LEFT]) {
-        position.x -= s;
-      }
-      if (keys[UP]) {
-        position.y -= s;
-      }
-      if (keys[DOWN]) {
-        position.y += s;
-      }
-      position.x = constrain(position.x, 0, world.cols * 25 -
-        25);
-      position.y = constrain(position.y, 0, world.rows * 25 -
-        25);
     };
   }
 }; // 
