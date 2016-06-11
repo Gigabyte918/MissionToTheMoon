@@ -1,4 +1,4 @@
-function() { //leave the extra parameters empty
+function grassimg() { //leave the extra parameters empty
   //Draw The Image
   for(var y = 50; y < 55; y++) {
             for(var x = 0; x < 25; x++) {
