@@ -85,6 +85,9 @@ var sketchProc = function(processingInstance) {
       this.w = 25;
       this.h = 25;
     };
+    grass.prototype.delete = function(i) {
+      Grass.splice(i, 1);
+    };
     grass.prototype.run = function() {
       this.display();
     };
@@ -240,14 +243,15 @@ var sketchProc = function(processingInstance) {
       bottom: -world.rows * 25,
       run: function() {
         this.pos.x = constrain(this.pos.x + (width / 2 - player.pos.x -
-          this.pos.x) / 10, this.right, 0);
+          this.pos.x) / 5, this.right, 0);
         this.pos.y = constrain(this.pos.y + (height / 2 - player.pos.y -
-          this.pos.y) / 10, this.bottom, 0);
+          this.pos.y) / 5, this.bottom, 0);
         translate(this.pos.x, this.pos.y);
       }
     };
     //Draw Function
     var draw = function() {
+      //size(window.innerWidth, window.innerHeight);
       for (var each in images) {
         if (typeof images[each] !== "object") {
           background(0, 0, 0, 0);
@@ -274,16 +278,20 @@ var sketchProc = function(processingInstance) {
         rect(0, 0, world.cols * 25, world.rows * 25);
       }
       popMatrix();
+      for (var each in Grass) {
+        
+      }
     };
   }
-}; // 
+}; //
 var canvas = document.getElementById("mycanvas");
 var processingInstance = new Processing(canvas, sketchProc);
+
 //Risizing canvas
 function resizeCanvas() {
   canvas.style.width = window.innerWidth + "px";
   setTimeout(function() {
-    canvas.style.height = window.innerHeigh + "px";
+    canvas.style.height = window.innerHeight + "px";
   }, 0);
 };
 window.onresize = resizeCanvas;
